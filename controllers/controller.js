@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer")
 const appPassword = process.env.APP_PASS
+const email = process.env.EMAIL
 
 class Controller {
     static showHome(_, res) {
@@ -11,13 +12,13 @@ class Controller {
             const transporter = nodemailer.createTransport({
                 service: "gmail",
                 auth: {
-                    user: "alifdermayudha@gmail.com",
+                    user: email,
                     pass: appPassword
                 }
             })
 
             const mailOptions = {
-                from: "no-reply@sindata.net",
+                from: email,
                 to: recipients,
                 subject: subject,
                 text: message
